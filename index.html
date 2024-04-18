@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title></title>
+  </head>
+  <body>
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Rethink Sans", sans-serif;
+        --font-sans: "Rethink Sans";
+      }
+    </style>
+    <style>
+      body {
+        font-family: "Archivo", sans-serif;
+        --font-sans: "Archivo";
+      }
+    </style>
+    <div class="flex h-screen flex-col">
+      <header
+        class="flex h-14 items-center gap-4 border-b px-4 lg:h-20 dark:border-gray-700 border-gray-200 dark:border-gray-800"
+      >
+        <a class="lg:hidden" href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-6 w-6"
+          >
+            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path>
+            <path
+              d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"
+            ></path>
+            <path d="M12 3v6"></path>
+          </svg>
+          <span class="sr-only">Home</span>
+        </a>
+        <div
+          class="hidden font-semibold lg:flex lg:flex-1 lg:items-center lg:gap-3 lg:text-base xl:text-lg"
+        >
+          Automatic Fire Detection and Bridge Notification
+        </div>
+        <div class="hidden ml-auto space-x-2 lg:flex">
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
+          >
+            Alarm
+          </button>
+          <button
+            class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3"
+          >
+            Bridge
+          </button>
+        </div>
+      </header>
+      <div class="grid flex-1 grid-cols-[280px_1fr]">
+        <div class="hidden border-r bg-gray-100/40 lg:flex flex-col w-full">
+          <div class="flex h-[60px] items-center border-b px-6">
+            <a class="flex items-center gap-2 font-semibold" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+              >
+                <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path>
+                <path
+                  d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"
+                ></path>
+                <path d="M12 3v6"></path>
+              </svg>
+              <span class="">Ship Name: MEARSK EMMA</span>
+            </a>
+          </div>
+          <div class="flex-1 flex flex-col gap-4 p-6">
+            <div class="grid gap-1.5">
+              <a
+                id="nav-containers"
+                class="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-gray-900 transition-all dark:text-gray-900"
+                href="javascript:showSection('containers');"
+                onclick="selectNavItem(this);"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                >
+                  <path d="m7.5 4.27 9 5.15"></path>
+                  <path
+                    d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"
+                  ></path>
+                  <path d="m3.3 7 8.7 5 8.7-5"></path>
+                  <path d="M12 22V12"></path>
+                </svg>
+                Containers
+              </a>
+              <a
+                id="nav-alarm-notification"
+                class="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-gray-900 transition-all dark:text-gray-900"
+                href="javascript:showSection('alarm-notification');"
+                onclick="selectNavItem(this);"
+              >
+                >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                >
+                  <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                  <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                </svg>
+                Alarm Notification
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="containers flex flex-col gap-4 p-6">
+          <div id="containers" class="containers hidden p-4">
+            <label for="">Container 1</label>
+            <div
+              class="grid gap-4 md:grid-cols-2 mb-6 bg-red-100 rounded-md p-4"
+            >
+              <div>
+                <label for="">Name</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Enter container name"
+                />
+              </div>
+              <div>
+                <label for=""> Item</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Enter item name"
+                />
+              </div>
+              <div>
+                <label for="">Date</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="date"
+                />
+              </div>
+              <div>
+                <label for="">Time</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="time"
+                />
+              </div>
+            </div>
+            <label for="">Container 2</label>
+            <div class="grid gap-4 md:grid-cols-2 bg-blue-100 rounded-md p-4">
+              <div>
+                <label for=""> Name</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Enter container name"
+                />
+              </div>
+              <div>
+                <label for="">Item</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Enter item name"
+                />
+              </div>
+              <div>
+                <label for="">Date</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="date"
+                />
+              </div>
+              <div>
+                <label for="">Time</label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="time"
+                />
+              </div>
+            </div>
+            <div class="flex gap-4 mt-4">
+              <button
+                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 bg-gray-800 text-white px-4 py-2 ml-auto"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+          <div id="alarm-notification" class="alarm-notification hidden">
+            <div id="container1" class="mb-4 p-4 rounded-lg border">
+              <h3 class="text-lg font-semibold mb-2">Container Number: 1</h3>
+              <p>Status: <span id="status1">OK</span></p>
+              <div class="flex mt-2">
+                <button
+                  onclick="triggerAlarm(1)"
+                  class="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded mr-2"
+                >
+                  Alarm
+                </button>
+                <button
+                  onclick="toggleLight(1)"
+                  class="text-white bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded mr-2"
+                >
+                  Light
+                </button>
+                <button
+                  onclick="reset(1)"
+                  class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <div id="container2" class="p-4 rounded-lg border">
+              <h3 class="text-lg font-semibold mb-2">Container Number: 2</h3>
+              <p>Status: <span id="status2">OK</span></p>
+              <div class="flex mt-2">
+                <button
+                  onclick="triggerAlarm(2)"
+                  class="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded mr-2"
+                >
+                  Alarm
+                </button>
+                <button
+                  onclick="toggleLight(2)"
+                  class="text-white bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded mr-2"
+                >
+                  Light
+                </button>
+                <button
+                  onclick="reset(2)"
+                  class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Function to show a specific section and highlight the corresponding nav item
+      function showSection(sectionId) {
+        // Hide all sections
+        document.getElementById("containers").style.display = "none";
+        document.getElementById("alarm-notification").style.display = "none";
+        // Display the selected section
+        document.getElementById(sectionId).style.display = "block";
+
+        // Update nav item highlighting
+        updateNavSelection(sectionId);
+      }
+
+      function updateNavSelection(activeSectionId) {
+        // Define mappings from section IDs to navigation item IDs
+        const navItemMap = {
+          containers: "nav-containers",
+          "alarm-notification": "nav-alarm-notification",
+        };
+
+        // Remove active styles from all nav items
+        Object.values(navItemMap).forEach((navId) => {
+          const element = document.getElementById(navId);
+          element.classList.remove("bg-gray-900", "text-white");
+          element.classList.add("text-white", "dark:text-gray-900");
+        });
+
+        // Add active styles to the current nav item
+        const activeNavItem = document.getElementById(
+          navItemMap[activeSectionId]
+        );
+        if (activeNavItem) {
+          activeNavItem.classList.remove("text-white0", "dark:text-gray-900");
+          activeNavItem.classList.add("bg-gray-900", "text-white");
+        }
+      }
+    </script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBJxCA5RbLa7-g4vw345GA7t4TgFIccAuo",
+        authDomain: "gas-leak-a4224.firebaseapp.com",
+        databaseURL:
+          "https://gas-leak-a4224-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "gas-leak-a4224",
+        storageBucket: "gas-leak-a4224.appspot.com",
+        messagingSenderId: "693024992529",
+        appId: "1:693024992529:web:4dc8995a87f0e6ff6030b0",
+        measurementId: "G-Z164JYBS7X",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
