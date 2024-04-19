@@ -75,7 +75,7 @@
                 <path d="m3.3 7 8.7 5 8.7-5"></path>
                 <path d="M12 22V12"></path>
               </svg>
-              Containers
+              Edit Containers
             </a>
             <a id="nav-alarm-notification" class="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-gray-900 transition-all dark:text-gray-900"
               href="javascript:showSection('alarm-notification');" onclick="selectNavItem(this);">
@@ -86,6 +86,17 @@
                 <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
               </svg>
               Alarm Notification
+            </a>
+            <a id="nav-containers" class="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-gray-900 transition-all dark:text-gray-900" href="javascript:showSection('editcontainers');"
+              onclick="selectNavItem(this);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="h-4 w-4">
+                <path d="m7.5 4.27 9 5.15"></path>
+                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                <path d="m3.3 7 8.7 5 8.7-5"></path>
+                <path d="M12 22V12"></path>
+              </svg>
+              Containers
             </a>
           </div>
         </div>
@@ -177,88 +188,152 @@
             </button>
           </div>
         </div>
-        <div id="alarm-notification" class="alarm-notification hidden">
-          <div id="container1" class="mb-4 p-4 rounded-lg border">
-            <h3 class="text-lg font-semibold mb-2">Container Number: 1</h3>
-            <p>Status: <span id="status1">OK</span></p>
-            <div class="flex mt-2">
-              <button onclick="triggerAlarm(1)" class="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded mr-2">
-                Alarm
-              </button>
-              <button onclick="toggleLight(1)" class="text-white bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded mr-2">
-                Light
-              </button>
-              <button onclick="reset(1)" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
-                Reset
+        <div class="editcontainers flex flex-col gap-4 p-6">
+          <div id="editcontainers" class="containers hidden p-4">
+            <label for="">Container 1</label>
+            <div class="grid gap-4 md:grid-cols-2 mb-6 bg-red-100 rounded-md p-4">
+              <div>
+                <label for="">Name:</label>
+                <h1 id="e1n" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+              <div>
+                <label for=""> Item:</label>
+                <h1 id="e1i" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+              <div>
+                <label for="">Date:</label>
+                <h1 id="e1d" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+              <div>
+                <label for="">Time:</label>
+                <h1 id="e1t" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+              <div>
+                <label for="">Fire:</label>
+                <h1 id="e1f" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+              <div>
+                <label for="">Smoke:</label>
+                <h1 id="e1s" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+            </div>
+            <label for="">Container 2</label>
+            <div class="grid gap-4 md:grid-cols-2 bg-blue-100 rounded-md p-4 justify-center text-align:center">
+              <div>
+                <label for=""> Name:</label>
+                <h1 id="e2n" class="ml-20 text-lg"></h1>
+              </div>
+              <div>
+                <label for="">Item:</label>
+                <h1 id="e2i" class="ml-20 text-lg"></h1>
+              </div>
+              <div>
+                <label for="">Date:</label>
+                <h1 id="e2d" class="ml-20 text-lg"></h1>
+              </div>
+              <div>
+                <label for="">Time:</label>
+                <h1 id="e2t" class="ml-20 text-lg"></h1>
+              </div>
+              <div>
+                <label for="">Fire:</label>
+                <h1 id="e2f" class="ml-20 text-lg"></h1>
+              </div>
+              <div>
+                <label for="">Smoke:</label>
+                <h1 id="e2s" class="ml-20 text-lg">l;hf;kgh</h1>
+              </div>
+            </div>
+            <div class="flex gap-4 mt-4">
+              <button id="svBtn1"
+                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 bg-gray-800 text-white px-4 py-2 ml-auto">
+                Save
               </button>
             </div>
           </div>
+          <div id="alarm-notification" class="alarm-notification hidden">
+            <div id="container1" class="mb-4 p-4 rounded-lg border">
+              <h3 class="text-lg font-semibold mb-2">Container Number: 1</h3>
+              <p>Status: <span id="status1">OK</span></p>
+              <div class="flex mt-2">
+                <button onclick="triggerAlarm(1)" id="a1f" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
+                  Fire
+                </button>
+                <button onclick="toggleLight(1)" id="a1s" class="text-white bg-yellow-400 px-4 py-2 rounded mr-2">
+                  Smoke
+                </button>
+                <button id="a1r" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
+                  Reset
+                </button>
+              </div>
+            </div>
 
-          <div id="container2" class="p-4 rounded-lg border">
-            <h3 class="text-lg font-semibold mb-2">Container Number: 2</h3>
-            <p>Status: <span id="status2">OK</span></p>
-            <div class="flex mt-2">
-              <button onclick="triggerAlarm(2)" class="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded mr-2">
-                Alarm
-              </button>
-              <button onclick="toggleLight(2)" class="text-white bg-yellow-400 hover:bg-yellow-500 px-4 py-2 rounded mr-2">
-                Light
-              </button>
-              <button onclick="reset(2)" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
-                Reset
-              </button>
+            <div id="container2" class="p-4 rounded-lg border">
+              <h3 class="text-lg font-semibold mb-2">Container Number: 2</h3>
+              <p>Status: <span id="status2">OK</span></p>
+              <div class="flex mt-2">
+                <button onclick="triggerAlarm(2)" id="a2f" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
+                  Fire
+                </button>
+                <button onclick="toggleLight(2)" id="a2s" class="text-white bg-yellow-400 px-4 py-2 rounded mr-2">
+                  Smoke
+                </button>
+                <button id="a2r" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
+                  Reset
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <script>
-    // Function to show a specific section and highlight the corresponding nav item
-    function showSection(sectionId) {
-      // Hide all sections
-      document.getElementById("containers").style.display = "none";
-      document.getElementById("alarm-notification").style.display = "none";
-      // Display the selected section
-      document.getElementById(sectionId).style.display = "block";
+    <script>
+      // Function to show a specific section and highlight the corresponding nav item
+      function showSection(sectionId) {
+        // Hide all sections
+        document.getElementById("containers").style.display = "none";
+        document.getElementById("alarm-notification").style.display = "none";
+        document.getElementById("editcontainers").style.display = "none";
+        // Display the selected section
+        document.getElementById(sectionId).style.display = "block";
 
-      // Update nav item highlighting
-      updateNavSelection(sectionId);
-    }
-
-    function updateNavSelection(activeSectionId) {
-      // Define mappings from section IDs to navigation item IDs
-      const navItemMap = {
-        containers: "nav-containers",
-        "alarm-notification": "nav-alarm-notification",
-      };
-
-      // Remove active styles from all nav items
-      Object.values(navItemMap).forEach((navId) => {
-        const element = document.getElementById(navId);
-        element.classList.remove("bg-gray-900", "text-white");
-        element.classList.add("text-white", "dark:text-gray-900");
-      });
-
-      // Add active styles to the current nav item
-      const activeNavItem = document.getElementById(
-        navItemMap[activeSectionId]
-      );
-      if (activeNavItem) {
-        activeNavItem.classList.remove("text-white0", "dark:text-gray-900");
-        activeNavItem.classList.add("bg-gray-900", "text-white");
+        // Update nav item highlighting
+        updateNavSelection(sectionId);
       }
-    }
 
-  </script>
+      function updateNavSelection(activeSectionId) {
+        // Define mappings from section IDs to navigation item IDs
+        const navItemMap = {
+          containers: "nav-containers",
+          "alarm-notification": "nav-alarm-notification",
+        };
 
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
-    import { getDatabase, set, get, ref } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+        // Remove active styles from all nav items
+        Object.values(navItemMap).forEach((navId) => {
+          const element = document.getElementById(navId);
+          element.classList.remove("bg-gray-900", "text-white");
+          element.classList.add("text-white", "dark:text-gray-900");
+        });
+
+        // Add active styles to the current nav item
+        const activeNavItem = document.getElementById(
+          navItemMap[activeSectionId]
+        );
+        if (activeNavItem) {
+          activeNavItem.classList.remove("text-white0", "dark:text-gray-900");
+          activeNavItem.classList.add("bg-gray-900", "text-white");
+        }
+      }
+
+    </script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+      import { getDatabase, set, get, ref, update } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
 
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -274,74 +349,135 @@
   measurementId: "G-Z164JYBS7X"
     };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getDatabase(app);
 
-    get(ref(db, '/Container1')).then((snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        console.log(data);
-        document.getElementById("container1Name").value = data.name
-        document.getElementById("container1Item").value = data.item
-        document.getElementById("container1Date").value = data.date
-        document.getElementById("container1Time").value = data.time
-        document.getElementById("container1Fire").value = data.fire
-        document.getElementById("container1Smoke").value = data.smoke
-        // Now you can use the data as needed, such as displaying it on the UI or processing it further
-      } else {
-        console.log('No data available for Container1');
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase(app);
+
+      get(ref(db, '/Conatiner1')).then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          console.log(data);
+          document.getElementById("container1Name").value = data.name
+          document.getElementById("container1Item").value = data.item
+          document.getElementById("container1Date").value = data.date
+          document.getElementById("container1Time").value = data.time
+          document.getElementById("container1Fire").value = data.fire
+          document.getElementById("container1Smoke").value = data.smoke
+          //  Change Text
+          document.getElementById("e1n").innerText = data.name
+          document.getElementById("e1i").innerText = data.item
+          document.getElementById("e1d").innerText = data.date
+          document.getElementById("e1t").innerText = data.time
+          document.getElementById("e1f").innerText = data.fire
+          document.getElementById("e1s").innerText = data.smoke
+          // Now you can use the data as needed, such as displaying it on the UI or processing it further
+          if (data.fire > 50) {
+            document.getElementById('a1f').classList.remove('bg-red-500')
+            document.getElementById('a1f').classList.add('bg-red-600')
+          } else {
+            document.getElementById('a1f').classList.remove('bg-red-500')
+            document.getElementById('a1f').classList.add('bg-green-600')
+          }
+          if (data.smoke > 50) {
+            document.getElementById('a1s').classList.remove('bg-yellow-400')
+            document.getElementById('a1s').classList.add('bg-red-400')
+          } else {
+            document.getElementById('a1s').classList.remove('bg-yellow-400')
+            document.getElementById('a1s').classList.add('bg-green-600')
+          }
+
+        } else {
+          console.log('No data available for Container1');
+        }
+      }).catch((error) => {
+        console.error('Error retrieving data:', error);
+      });
+
+      get(ref(db, '/Conatiner2')).then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          console.log(data);
+          document.getElementById("container2Name").value = data.name
+          document.getElementById("container2Item").value = data.item
+          document.getElementById("container2Date").value = data.date
+          document.getElementById("container2Time").value = data.time
+          document.getElementById("container2Fire").value = data.fire
+          document.getElementById("container2Smoke").value = data.smoke
+          // Edit Container
+          document.getElementById("e2n").innerText = data.name
+          document.getElementById("e2i").innerText = data.item
+          document.getElementById("e2d").innerText = data.date
+          document.getElementById("e2t").innerText = data.time
+          document.getElementById("e2f").innerText = data.fire
+          document.getElementById("e2s").innerText = data.smoke
+
+          if (data.fire > 50) {
+            document.getElementById('a2f').classList.remove('bg-red-500')
+            document.getElementById('a2f').classList.add('bg-red-600')
+          } else {
+            document.getElementById('a2f').classList.remove('bg-red-500')
+            document.getElementById('a2f').classList.add('bg-green-600')
+          }
+          if (data.smoke > 50) {
+            document.getElementById('a2s').classList.remove('bg-yellow-400')
+            document.getElementById('a2s').classList.add('bg-red-600')
+          } else {
+            document.getElementById('a2s').classList.remove('bg-yellow-400')
+            document.getElementById('a2s').classList.add('bg-green-600')
+          }
+
+          // Now you can use the data as needed, such as displaying it on the UI or processing it further
+        } else {
+          console.log('No data available for Container1');
+        }
+      }).catch((error) => {
+        console.error('Error retrieving data:', error);
+      });
+
+      function SaveData() {
+        const container1Data = {
+          name: document.getElementById("container1Name").value,
+          item: document.getElementById("container1Item").value,
+          date: document.getElementById("container1Date").value,
+          time: document.getElementById("container1Time").value,
+          fire: document.getElementById("container1Fire").value,
+          smoke: document.getElementById("container1Smoke").value,
+        };
+
+        // Get container 2 data
+        const container2Data = {
+          name: document.getElementById("container2Name").value,
+          item: document.getElementById("container2Item").value,
+          date: document.getElementById("container2Date").value,
+          time: document.getElementById("container2Time").value,
+          fire: document.getElementById("container2Fire").value,
+          smoke: document.getElementById("container2Smoke").value,
+        };
+
+        set(ref(db, '/Conatiner2'), container2Data)
+        set(ref(db, '/Conatiner1'), container1Data)
       }
-    }).catch((error) => {
-      console.error('Error retrieving data:', error);
-    });
 
-    get(ref(db, '/Conatiner2')).then((snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        console.log(data);
-        document.getElementById("container2Name").value = data.name
-        document.getElementById("container2Item").value = data.item
-        document.getElementById("container2Date").value = data.date
-        document.getElementById("container2Time").value = data.time
-        document.getElementById("container2Fire").value = data.fire
-        document.getElementById("container2Smoke").value = data.smoke
-        // Now you can use the data as needed, such as displaying it on the UI or processing it further
-      } else {
-        console.log('No data available for Container1');
+      function ResetAlarm1() {
+        update(ref(db, '/Conatiner1'), {
+          fire:0,
+          smoke:0
+        })
       }
-    }).catch((error) => {
-      console.error('Error retrieving data:', error);
-    });
 
-    function SaveData() {
-      const container1Data = {
-        name: document.getElementById("container1Name").value,
-        item: document.getElementById("container1Item").value,
-        date: document.getElementById("container1Date").value,
-        time: document.getElementById("container1Time").value,
-        fire: document.getElementById("container1Fire").value,
-        smoke: document.getElementById("container1Smoke").value,
-      };
+      function ResetAlarm2() {
+        update(ref(db, '/Conatiner2'), {
+          fire:0,
+          smoke:0
+        })
+      }
 
-      // Get container 2 data
-      const container2Data = {
-        name: document.getElementById("container2Name").value,
-        item: document.getElementById("container2Item").value,
-        date: document.getElementById("container2Date").value,
-        time: document.getElementById("container2Time").value,
-        fire: document.getElementById("container2Fire").value,
-        smoke: document.getElementById("container2Smoke").value,
-      };
-
-      set(ref(db, '/Conatiner2'), container2Data)
-      set(ref(db, '/Conatiner1'), container1Data)
-    }
-
-    document.getElementById("svBtn1").addEventListener('click', SaveData)
-
-  </script>
+      document.getElementById("svBtn1").addEventListener('click', SaveData)
+      document.getElementById("a1r").addEventListener('click', ResetAlarm1)
+      document.getElementById("a2r").addEventListener('click', ResetAlarm2)
+    </script>
 </body>
 
 </html>
