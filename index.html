@@ -130,16 +130,6 @@
                 type="time" />
             </div>
             <div>
-              <label for="">Fire</label>
-              <input id="container1Fire"
-                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                type="number" />
-            </div>
-            <div>
-              <label for="">Smoke</label>
-              <input id="container1Smoke"
-                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                type="number" />
             </div>
           </div>
           <label for="">Container 2</label>
@@ -167,18 +157,6 @@
               <input id="container2Time"
                 class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 type="time" />
-            </div>
-            <div>
-              <label for="">Fire</label>
-              <input id="container2Fire"
-                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                type="number" />
-            </div>
-            <div>
-              <label for="">Smoke</label>
-              <input id="container2Smoke"
-                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                type="number" />
             </div>
           </div>
           <div class="flex gap-4 mt-4">
@@ -244,12 +222,7 @@
                 <h1 id="e2s" class="ml-20 text-lg">l;hf;kgh</h1>
               </div>
             </div>
-            <div class="flex gap-4 mt-4">
-              <button id="svBtn1"
-                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 bg-gray-800 text-white px-4 py-2 ml-auto">
-                Save
-              </button>
-            </div>
+
           </div>
           <div id="alarm-notification" class="alarm-notification hidden">
             <div id="container1" class="mb-4 p-4 rounded-lg border">
@@ -259,7 +232,7 @@
                 <button onclick="triggerAlarm(1)" id="a1f" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Fire
                 </button>
-                <button onclick="toggleLight(1)" id="a1s" class="text-white bg-yellow-400 px-4 py-2 rounded mr-2">
+                <button onclick="toggleLight(1)" id="a1s" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Smoke
                 </button>
                 <button id="a1r" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
@@ -275,7 +248,7 @@
                 <button onclick="triggerAlarm(2)" id="a2f" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Fire
                 </button>
-                <button onclick="toggleLight(2)" id="a2s" class="text-white bg-yellow-400 px-4 py-2 rounded mr-2">
+                <button onclick="toggleLight(2)" id="a2s" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Smoke
                 </button>
                 <button id="a2r" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
@@ -335,115 +308,108 @@
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    // Get Credentials from Firebase 
-    const firebaseConfig = {
-       apiKey: "AIzaSyBJxCA5RbLa7-g4vw345GA7t4TgFIccAuo",
-  authDomain: "gas-leak-a4224.firebaseapp.com",
-  databaseURL: "https://gas-leak-a4224-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "gas-leak-a4224",
-  storageBucket: "gas-leak-a4224.appspot.com",
-  messagingSenderId: "693024992529",
-  appId: "1:693024992529:web:4dc8995a87f0e6ff6030b0",
-  measurementId: "G-Z164JYBS7X"
-    };
-
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBJxCA5RbLa7-g4vw345GA7t4TgFIccAuo",
+        authDomain: "gas-leak-a4224.firebaseapp.com",
+        databaseURL: "https://gas-leak-a4224-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "gas-leak-a4224",
+        storageBucket: "gas-leak-a4224.appspot.com",
+        messagingSenderId: "693024992529",
+        appId: "1:693024992529:web:4dc8995a87f0e6ff6030b0",
+        measurementId: "G-Z164JYBS7X"
+      };
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getDatabase(app);
+      function GetData() {
+        get(ref(db, '/Conatiner1')).then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            console.log(data);
+            document.getElementById("container1Name").value = data.name
+            document.getElementById("container1Item").value = data.item
+            document.getElementById("container1Date").value = data.date
+            document.getElementById("container1Time").value = data.time
+            //  Change Text
+            document.getElementById("e1n").innerText = data.name
+            document.getElementById("e1i").innerText = data.item
+            document.getElementById("e1d").innerText = data.date
+            document.getElementById("e1t").innerText = data.time
+            document.getElementById("e1f").innerText = data.fire
+            document.getElementById("e1s").innerText = data.smoke
+            // Now you can use the data as needed, such as displaying it on the UI or processing it further
+            if (data.fire > 50) {
+              document.getElementById('a1f').classList.remove('bg-red-500')
+              document.getElementById('a1f').classList.add('bg-red-500')
+            } else {
+              document.getElementById('a1f').classList.remove('bg-red-500')
+              document.getElementById('a1f').classList.add('bg-green-600')
+            }
+            if (data.smoke > 50) {
+              document.getElementById('a1s').classList.remove('bg-red-500')
+              document.getElementById('a1s').classList.add('bg-red-500')
+            } else {
+              document.getElementById('a1s').classList.remove('bg-red-500')
+              document.getElementById('a1s').classList.add('bg-green-600')
+            }
 
-      get(ref(db, '/Conatiner1')).then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log(data);
-          document.getElementById("container1Name").value = data.name
-          document.getElementById("container1Item").value = data.item
-          document.getElementById("container1Date").value = data.date
-          document.getElementById("container1Time").value = data.time
-          document.getElementById("container1Fire").value = data.fire
-          document.getElementById("container1Smoke").value = data.smoke
-          //  Change Text
-          document.getElementById("e1n").innerText = data.name
-          document.getElementById("e1i").innerText = data.item
-          document.getElementById("e1d").innerText = data.date
-          document.getElementById("e1t").innerText = data.time
-          document.getElementById("e1f").innerText = data.fire
-          document.getElementById("e1s").innerText = data.smoke
-          // Now you can use the data as needed, such as displaying it on the UI or processing it further
-          if (data.fire > 50) {
-            document.getElementById('a1f').classList.remove('bg-red-500')
-            document.getElementById('a1f').classList.add('bg-red-600')
           } else {
-            document.getElementById('a1f').classList.remove('bg-red-500')
-            document.getElementById('a1f').classList.add('bg-green-600')
+            console.log('No data available for Container1');
           }
-          if (data.smoke > 50) {
-            document.getElementById('a1s').classList.remove('bg-yellow-400')
-            document.getElementById('a1s').classList.add('bg-red-400')
+        }).catch((error) => {
+          console.error('Error retrieving data:', error);
+        });
+
+        get(ref(db, '/Conatiner2')).then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            console.log(data);
+            document.getElementById("container2Name").value = data.name
+            document.getElementById("container2Item").value = data.item
+            document.getElementById("container2Date").value = data.date
+            document.getElementById("container2Time").value = data.time
+            // Edit Container
+            document.getElementById("e2n").innerText = data.name
+            document.getElementById("e2i").innerText = data.item
+            document.getElementById("e2d").innerText = data.date
+            document.getElementById("e2t").innerText = data.time
+            document.getElementById("e2f").innerText = data.fire
+            document.getElementById("e2s").innerText = data.smoke
+
+            if (data.fire > 50) {
+              document.getElementById('a2f').classList.remove('bg-red-500')
+              document.getElementById('a2f').classList.add('bg-red-500')
+            } else {
+              document.getElementById('a2f').classList.remove('bg-red-500')
+              document.getElementById('a2f').classList.add('bg-green-600')
+            }
+            if (data.smoke > 50) {
+              document.getElementById('a2s').classList.remove('bg-red-500')
+              document.getElementById('a2s').classList.add('bg-red-500')
+            } else {
+              document.getElementById('a2s').classList.remove('bg-red-500')
+              document.getElementById('a2s').classList.add('bg-green-600')
+            }
+
+            // Now you can use the data as needed, such as displaying it on the UI or processing it further
           } else {
-            document.getElementById('a1s').classList.remove('bg-yellow-400')
-            document.getElementById('a1s').classList.add('bg-green-600')
+            console.log('No data available for Container1');
           }
-
-        } else {
-          console.log('No data available for Container1');
-        }
-      }).catch((error) => {
-        console.error('Error retrieving data:', error);
-      });
-
-      get(ref(db, '/Conatiner2')).then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log(data);
-          document.getElementById("container2Name").value = data.name
-          document.getElementById("container2Item").value = data.item
-          document.getElementById("container2Date").value = data.date
-          document.getElementById("container2Time").value = data.time
-          document.getElementById("container2Fire").value = data.fire
-          document.getElementById("container2Smoke").value = data.smoke
-          // Edit Container
-          document.getElementById("e2n").innerText = data.name
-          document.getElementById("e2i").innerText = data.item
-          document.getElementById("e2d").innerText = data.date
-          document.getElementById("e2t").innerText = data.time
-          document.getElementById("e2f").innerText = data.fire
-          document.getElementById("e2s").innerText = data.smoke
-
-          if (data.fire > 50) {
-            document.getElementById('a2f').classList.remove('bg-red-500')
-            document.getElementById('a2f').classList.add('bg-red-600')
-          } else {
-            document.getElementById('a2f').classList.remove('bg-red-500')
-            document.getElementById('a2f').classList.add('bg-green-600')
-          }
-          if (data.smoke > 50) {
-            document.getElementById('a2s').classList.remove('bg-yellow-400')
-            document.getElementById('a2s').classList.add('bg-red-600')
-          } else {
-            document.getElementById('a2s').classList.remove('bg-yellow-400')
-            document.getElementById('a2s').classList.add('bg-green-600')
-          }
-
-          // Now you can use the data as needed, such as displaying it on the UI or processing it further
-        } else {
-          console.log('No data available for Container1');
-        }
-      }).catch((error) => {
-        console.error('Error retrieving data:', error);
-      });
-
+        }).catch((error) => {
+          console.error('Error retrieving data:', error);
+        });
+      }
+      GetData()
       function SaveData() {
         const container1Data = {
           name: document.getElementById("container1Name").value,
           item: document.getElementById("container1Item").value,
           date: document.getElementById("container1Date").value,
           time: document.getElementById("container1Time").value,
-          fire: document.getElementById("container1Fire").value,
-          smoke: document.getElementById("container1Smoke").value,
         };
 
         // Get container 2 data
@@ -452,26 +418,27 @@
           item: document.getElementById("container2Item").value,
           date: document.getElementById("container2Date").value,
           time: document.getElementById("container2Time").value,
-          fire: document.getElementById("container2Fire").value,
-          smoke: document.getElementById("container2Smoke").value,
         };
 
-        set(ref(db, '/Conatiner2'), container2Data)
-        set(ref(db, '/Conatiner1'), container1Data)
+        update(ref(db, '/Conatiner2'), container2Data)
+        update(ref(db, '/Conatiner1'), container1Data)
+        GetData()
       }
 
       function ResetAlarm1() {
         update(ref(db, '/Conatiner1'), {
-          fire:0,
-          smoke:0
+          fire: 0,
+          smoke: 0
         })
+        GetData()
       }
 
       function ResetAlarm2() {
         update(ref(db, '/Conatiner2'), {
-          fire:0,
-          smoke:0
+          fire: 0,
+          smoke: 0
         })
+        GetData()
       }
 
       document.getElementById("svBtn1").addEventListener('click', SaveData)
