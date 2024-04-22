@@ -232,7 +232,7 @@
                 <button onclick="triggerAlarm(1)" id="a1f" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Fire
                 </button>
-                <button onclick="toggleLight(1)" id="a1s" class="text-white bg-yellow-400 px-4 py-2 rounded mr-2">
+                <button onclick="toggleLight(1)" id="a1s" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Smoke
                 </button>
                 <button id="a1r" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
@@ -248,7 +248,7 @@
                 <button onclick="triggerAlarm(2)" id="a2f" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Fire
                 </button>
-                <button onclick="toggleLight(2)" id="a2s" class="text-white bg-yellow-400 px-4 py-2 rounded mr-2">
+                <button onclick="toggleLight(2)" id="a2s" class="text-white bg-red-500 px-4 py-2 rounded mr-2">
                   Smoke
                 </button>
                 <button id="a2r" class="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">
@@ -304,7 +304,7 @@
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
-      import { getDatabase, set, get, ref, update } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
+      import { getDatabase, set, get, ref, update, onChildChanged } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -325,84 +325,105 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getDatabase(app);
+      function GetData() {
+        get(ref(db, '/Conatiner1')).then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            console.log(data);
+            document.getElementById("container1Name").value = data.name
+            document.getElementById("container1Item").value = data.item
+            document.getElementById("container1Date").value = data.date
+            document.getElementById("container1Time").value = data.time
+            //  Change Text
+            document.getElementById("e1n").innerText = data.name
+            document.getElementById("e1i").innerText = data.item
+            document.getElementById("e1d").innerText = data.date
+            document.getElementById("e1t").innerText = data.time
+            document.getElementById("e1f").innerText = data.fire
+            document.getElementById("e1s").innerText = data.smoke
+            // Now you can use the data as needed, such as displaying it on the UI or processing it further
+            if (data.fire > 50) {
+              if (document.getElementById('a1f').classList.contains("bg-red-500")) {
+                document.getElementById('a1f').classList.remove('bg-red-500')
+                document.getElementById('a1f').classList.add('bg-red-500')
+              } else if (document.getElementById('a1f').classList.contains("bg-green-600")) {
+                document.getElementById('a1f').classList.remove('bg-green-600')
+                document.getElementById('a1f').classList.add('bg-red-500')
+              }
+            } else {
+              document.getElementById('a1f').classList.remove('bg-red-500')
+              document.getElementById('a1f').classList.add('bg-green-600')
+            }
+            if (data.smoke > 50) {
+              if (document.getElementById('a1s').classList.contains("bg-red-500")) {
+                document.getElementById('a1s').classList.remove('bg-red-500')
+                document.getElementById('a1s').classList.add('bg-red-500')
+              } else if (document.getElementById('a1s').classList.contains("bg-green-600")) {
+                document.getElementById('a1s').classList.remove('bg-green-600')
+                document.getElementById('a1s').classList.add('bg-red-500')
+              }
+            } else {
+              document.getElementById('a1s').classList.remove('bg-red-500')
+              document.getElementById('a1s').classList.add('bg-green-600')
+            }
 
-      get(ref(db, '/Conatiner1')).then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log(data);
-          document.getElementById("container1Name").value = data.name
-          document.getElementById("container1Item").value = data.item
-          document.getElementById("container1Date").value = data.date
-          document.getElementById("container1Time").value = data.time
-          //  Change Text
-          document.getElementById("e1n").innerText = data.name
-          document.getElementById("e1i").innerText = data.item
-          document.getElementById("e1d").innerText = data.date
-          document.getElementById("e1t").innerText = data.time
-          document.getElementById("e1f").innerText = data.fire
-          document.getElementById("e1s").innerText = data.smoke
-          // Now you can use the data as needed, such as displaying it on the UI or processing it further
-          if (data.fire > 50) {
-            document.getElementById('a1f').classList.remove('bg-red-500')
-            document.getElementById('a1f').classList.add('bg-red-600')
           } else {
-            document.getElementById('a1f').classList.remove('bg-red-500')
-            document.getElementById('a1f').classList.add('bg-green-600')
+            console.log('No data available for Container1');
           }
-          if (data.smoke > 50) {
-            document.getElementById('a1s').classList.remove('bg-yellow-400')
-            document.getElementById('a1s').classList.add('bg-red-400')
+        }).catch((error) => {
+          console.error('Error retrieving data:', error);
+        });
+
+        get(ref(db, '/Conatiner2')).then((snapshot) => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            console.log(data);
+            document.getElementById("container2Name").value = data.name
+            document.getElementById("container2Item").value = data.item
+            document.getElementById("container2Date").value = data.date
+            document.getElementById("container2Time").value = data.time
+            // Edit Container
+            document.getElementById("e2n").innerText = data.name
+            document.getElementById("e2i").innerText = data.item
+            document.getElementById("e2d").innerText = data.date
+            document.getElementById("e2t").innerText = data.time
+            document.getElementById("e2f").innerText = data.fire
+            document.getElementById("e2s").innerText = data.smoke
+
+            if (data.fire > 50) {
+              if (document.getElementById('a2f').classList.contains("bg-red-500")) {
+                document.getElementById('a2f').classList.remove('bg-red-500')
+                document.getElementById('a2f').classList.add('bg-red-500')
+              } else if (document.getElementById('a2f').classList.contains("bg-green-600")) {
+                document.getElementById('a2f').classList.remove('bg-green-600')
+                document.getElementById('a2f').classList.add('bg-red-500')
+              }
+            } else {
+              document.getElementById('a2f').classList.remove('bg-red-500')
+              document.getElementById('a2f').classList.add('bg-green-600')
+            }
+            if (data.smoke > 50) {
+              if (document.getElementById('a2s').classList.contains("bg-red-500")) {
+                document.getElementById('a2s').classList.remove('bg-red-500')
+                document.getElementById('a2s').classList.add('bg-red-500')
+              } else if (document.getElementById('a2s').classList.contains("bg-green-600")) {
+                document.getElementById('a2s').classList.remove('bg-green-600')
+                document.getElementById('a2s').classList.add('bg-red-500')
+              }
+            } else {
+              document.getElementById('a2s').classList.remove('bg-red-500')
+              document.getElementById('a2s').classList.add('bg-green-600')
+            }
+
+            // Now you can use the data as needed, such as displaying it on the UI or processing it further
           } else {
-            document.getElementById('a1s').classList.remove('bg-yellow-400')
-            document.getElementById('a1s').classList.add('bg-green-600')
+            console.log('No data available for Container1');
           }
-
-        } else {
-          console.log('No data available for Container1');
-        }
-      }).catch((error) => {
-        console.error('Error retrieving data:', error);
-      });
-
-      get(ref(db, '/Conatiner2')).then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log(data);
-          document.getElementById("container2Name").value = data.name
-          document.getElementById("container2Item").value = data.item
-          document.getElementById("container2Date").value = data.date
-          document.getElementById("container2Time").value = data.time
-          // Edit Container
-          document.getElementById("e2n").innerText = data.name
-          document.getElementById("e2i").innerText = data.item
-          document.getElementById("e2d").innerText = data.date
-          document.getElementById("e2t").innerText = data.time
-          document.getElementById("e2f").innerText = data.fire
-          document.getElementById("e2s").innerText = data.smoke
-
-          if (data.fire > 50) {
-            document.getElementById('a2f').classList.remove('bg-red-500')
-            document.getElementById('a2f').classList.add('bg-red-600')
-          } else {
-            document.getElementById('a2f').classList.remove('bg-red-500')
-            document.getElementById('a2f').classList.add('bg-green-600')
-          }
-          if (data.smoke > 50) {
-            document.getElementById('a2s').classList.remove('bg-yellow-400')
-            document.getElementById('a2s').classList.add('bg-red-600')
-          } else {
-            document.getElementById('a2s').classList.remove('bg-yellow-400')
-            document.getElementById('a2s').classList.add('bg-green-600')
-          }
-
-          // Now you can use the data as needed, such as displaying it on the UI or processing it further
-        } else {
-          console.log('No data available for Container1');
-        }
-      }).catch((error) => {
-        console.error('Error retrieving data:', error);
-      });
-
+        }).catch((error) => {
+          console.error('Error retrieving data:', error);
+        });
+      }
+      GetData()
       function SaveData() {
         const container1Data = {
           name: document.getElementById("container1Name").value,
@@ -421,6 +442,7 @@
 
         update(ref(db, '/Conatiner2'), container2Data)
         update(ref(db, '/Conatiner1'), container1Data)
+        GetData()
       }
 
       function ResetAlarm1() {
@@ -428,6 +450,7 @@
           fire: 0,
           smoke: 0
         })
+        GetData()
       }
 
       function ResetAlarm2() {
@@ -435,7 +458,18 @@
           fire: 0,
           smoke: 0
         })
+        GetData()
       }
+
+      onChildChanged(ref(db, '/Conatiner1'), (data) => {
+        console.log(data.key, data.val());
+        GetData()
+      });
+
+      onChildChanged(ref(db, '/Conatiner2'), (data) => {
+        console.log(data.key, data.val());
+        GetData()
+      });
 
       document.getElementById("svBtn1").addEventListener('click', SaveData)
       document.getElementById("a1r").addEventListener('click', ResetAlarm1)
