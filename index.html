@@ -61,7 +61,7 @@
               <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
               <path d="M12 3v6"></path>
             </svg>
-            <span class="">Ship Name: LIBERTY</span>
+            <span class="">Ship Name: LIBERTY/span>
           </a>
         </div>
         <div class="flex-1 flex flex-col gap-4 p-6">
@@ -186,7 +186,6 @@
                 <label for="">Time:</label>
                 <h1 id="e1t" class="ml-20 text-lg">l;hf;kgh</h1>
               </div>
-              
             </div>
             <label for="">Container 2</label>
             <div class="grid gap-4 md:grid-cols-2 bg-blue-100 rounded-md p-4 justify-center text-align:center">
@@ -206,7 +205,6 @@
                 <label for="">Time:</label>
                 <h1 id="e2t" class="ml-20 text-lg"></h1>
               </div>
-             
             </div>
 
           </div>
@@ -325,8 +323,6 @@
             document.getElementById("e1i").innerText = data.item
             document.getElementById("e1d").innerText = data.date
             document.getElementById("e1t").innerText = data.time
-            document.getElementById("e1f").innerText = data.fire
-            document.getElementById("e1s").innerText = data.smoke
             // Now you can use the data as needed, such as displaying it on the UI or processing it further
             if (data.fire > 50) {
               if (document.getElementById('a1f').classList.contains("bg-red-500")) {
@@ -373,8 +369,6 @@
             document.getElementById("e2i").innerText = data.item
             document.getElementById("e2d").innerText = data.date
             document.getElementById("e2t").innerText = data.time
-            document.getElementById("e2f").innerText = data.fire
-            document.getElementById("e2s").innerText = data.smoke
 
             if (data.fire > 50) {
               if (document.getElementById('a2f').classList.contains("bg-red-500")) {
