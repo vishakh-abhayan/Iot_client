@@ -304,7 +304,7 @@
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
-      import { getDatabase, set, get, ref, update } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
+      import { getDatabase, set, get, ref, update, onChildChanged } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -343,15 +343,25 @@
             document.getElementById("e1s").innerText = data.smoke
             // Now you can use the data as needed, such as displaying it on the UI or processing it further
             if (data.fire > 50) {
-              document.getElementById('a1f').classList.remove('bg-red-500')
-              document.getElementById('a1f').classList.add('bg-red-500')
+              if (document.getElementById('a1f').classList.contains("bg-red-500")) {
+                document.getElementById('a1f').classList.remove('bg-red-500')
+                document.getElementById('a1f').classList.add('bg-red-500')
+              } else if (document.getElementById('a1f').classList.contains("bg-green-600")) {
+                document.getElementById('a1f').classList.remove('bg-green-600')
+                document.getElementById('a1f').classList.add('bg-red-500')
+              }
             } else {
               document.getElementById('a1f').classList.remove('bg-red-500')
               document.getElementById('a1f').classList.add('bg-green-600')
             }
             if (data.smoke > 50) {
-              document.getElementById('a1s').classList.remove('bg-red-500')
-              document.getElementById('a1s').classList.add('bg-red-500')
+              if (document.getElementById('a1s').classList.contains("bg-red-500")) {
+                document.getElementById('a1s').classList.remove('bg-red-500')
+                document.getElementById('a1s').classList.add('bg-red-500')
+              } else if (document.getElementById('a1s').classList.contains("bg-green-600")) {
+                document.getElementById('a1s').classList.remove('bg-green-600')
+                document.getElementById('a1s').classList.add('bg-red-500')
+              }
             } else {
               document.getElementById('a1s').classList.remove('bg-red-500')
               document.getElementById('a1s').classList.add('bg-green-600')
@@ -381,15 +391,25 @@
             document.getElementById("e2s").innerText = data.smoke
 
             if (data.fire > 50) {
-              document.getElementById('a2f').classList.remove('bg-red-500')
-              document.getElementById('a2f').classList.add('bg-red-500')
+              if (document.getElementById('a2f').classList.contains("bg-red-500")) {
+                document.getElementById('a2f').classList.remove('bg-red-500')
+                document.getElementById('a2f').classList.add('bg-red-500')
+              } else if (document.getElementById('a2f').classList.contains("bg-green-600")) {
+                document.getElementById('a2f').classList.remove('bg-green-600')
+                document.getElementById('a2f').classList.add('bg-red-500')
+              }
             } else {
               document.getElementById('a2f').classList.remove('bg-red-500')
               document.getElementById('a2f').classList.add('bg-green-600')
             }
             if (data.smoke > 50) {
-              document.getElementById('a2s').classList.remove('bg-red-500')
-              document.getElementById('a2s').classList.add('bg-red-500')
+              if (document.getElementById('a2s').classList.contains("bg-red-500")) {
+                document.getElementById('a2s').classList.remove('bg-red-500')
+                document.getElementById('a2s').classList.add('bg-red-500')
+              } else if (document.getElementById('a2s').classList.contains("bg-green-600")) {
+                document.getElementById('a2s').classList.remove('bg-green-600')
+                document.getElementById('a2s').classList.add('bg-red-500')
+              }
             } else {
               document.getElementById('a2s').classList.remove('bg-red-500')
               document.getElementById('a2s').classList.add('bg-green-600')
@@ -440,6 +460,16 @@
         })
         GetData()
       }
+
+      onChildChanged(ref(db, '/Conatiner1'), (data) => {
+        console.log(data.key, data.val());
+        GetData()
+      });
+
+      onChildChanged(ref(db, '/Conatiner2'), (data) => {
+        console.log(data.key, data.val());
+        GetData()
+      });
 
       document.getElementById("svBtn1").addEventListener('click', SaveData)
       document.getElementById("a1r").addEventListener('click', ResetAlarm1)
