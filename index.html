@@ -289,6 +289,7 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
       import { getDatabase, set, get, ref, update, onChildChanged } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"
+      import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -309,6 +310,23 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getDatabase(app);
+      const auth = getAuth(app);
+
+        // SignIn Anonymously
+  function signIn() {
+    signInAnonymously(auth)
+      .then(() => {
+        console.log("Signed in anonymously");
+        GetData(); // Retrieve data after authentication
+      })
+      .catch((error) => {
+        console.error(`Error signing in anonymously: ${error.message}`);
+      });
+  }
+
+  signIn();
+
+
       function GetData() {
         get(ref(db, '/Conatiner1')).then((snapshot) => {
           if (snapshot.exists()) {
